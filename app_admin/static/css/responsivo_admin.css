@@ -1,0 +1,107 @@
+/*================================= RESPONSIVIDADE ==================================*/
+/*CELULAR*/
+@media only screen and (max-width: 900px){
+    /*>>>>>>>>>>>>>> OPÇÃO RAPIDA <<<<<<<<<<<<<<<<*/
+    .opcao_rapida{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .opcao_rapida div{
+        width: 95vw;
+        height:2rem;
+        align-items: center;
+        justify-content: center;
+    }
+    .opcao_rapida a{
+        margin-top: 0rem;
+    }
+    .opcao_rapida h5{
+        height: 2rem;
+        font-size: 100%;
+        padding-top: 0.5rem;
+    }
+    .separador h5{
+        font-size: 80%;
+        padding-top: 0;
+    }
+    /*----------------------------------------------*/
+    /*>>>>>>>>>>>>>> AREA BOTÃO <<<<<<<<<<<<<<<<*/
+    .area_botao{
+        background-color: #303e48;
+        width: 100%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cabecalho{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+    }
+    .cabecalho h4{
+        padding-left: 0;
+    }
+
+    .botoes_area{
+        width: 100%;
+        height: 50%;
+        align-items: initial;
+    }
+
+    .btn{
+        margin-right: 5px;
+        color: #ececec;
+        height: 2rem;
+        font-size: 80%;
+    }
+    
+    .btn_excluir, .btn_alterar{
+        width: 2rem;
+    }
+
+    .btn_excluir img, .btn_alterar img{
+        width: 50%
+    }
+    .btn_adicionar img{
+        width: 15%;
+    }
+    /*----------------------------------------------*/
+    /*>>>>>>>>>>>>>> TABELA <<<<<<<<<<<<<<<<*/
+    .coluna_id, .coluna_data{
+        background-color: #adadad;
+        display: none;
+    }
+
+    .cabecalho_tabela{
+        font-size: 70%;
+    }
+
+    .dados_tabela td{
+        font-size: 80%;
+    }
+    td img{
+        width: 30%;
+    }
+    /*----------------------------------------------*/
+    /*>>>>>>>>>>>>>> POPUP <<<<<<<<<<<<<<<<*/
+    /*POPUP EXCLUIR*/
+    .modal_excluir > div {
+        width: 300px;
+        margin: 40% auto;
+    }
+    .container_texto{
+        margin-top: 3%;
+        width: 100%;
+
+        font-size: 80%;
+    }
+    /*POPUP DICIONAR*/
+    .modal > div {
+        width: 350px;
+        margin: 10% auto;
+    }
+}

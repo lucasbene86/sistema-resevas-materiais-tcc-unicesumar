@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilo_admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo_admin.css' %}">
+    <link rel="icon" href="{% static 'images/icone_aba.png'%}">
+    <title>Admin - Seav Online</title>
+</head>
+<body>
+    <div id="container_fundo">
+        {% autoescape off %}
+            {{ popup }}
+        {% endautoescape %}
+
+        <div class="opcao_rapida">
+            <h5>Área Administrativa SEAV Online</h5>
+            <div class="separador">
+                <a class="btn_inicio_site" href="http://{{ host_name_server }}/">VOLTAR AO INÍCIO</a>
+                <h5>/</h5>
+                <a class="btn_logout" href="http://{{ host_name_server }}/login/">ENCERRAR SESSÃO</a>
+            </div>
+            
+        </div>
+
+        <div class="area_crud">
+            <div class="area_botao">
+                <div class="cabecalho">
+                    <h4>Cadastro de funcionários</h4>
+                </div>
+                <div class="botoes_area">
+                    <!--Botão para excluir-->
+                    <a href="#excluir" id="excluir_dados" class="btn btn_excluir"><img src="{% static 'images/icone_admin_excluir.png' %}" alt="Deletar"></a>
+                    <div id="excluir" class="modal_excluir">
+                        <div class="container_excluir">
+                                <div class="container_texto">
+                                    <div class="container_atencao"></div>
+                                    <label>Deseja apagar o usuário selecionado?</label>
+                                </div>
+
+                                <div class="container_btns_excluir">
+                                    <form class="form_btn_material_setor" method='get' action='#'>
+                                        <input id="id_exclusao" name="id_exclusao" type="text" style="display: none;" required="">
+                                        <button class="btn_excluir_popup btns_modal" title="Apagar item" type="submit" value="excluir" name="excluir">EXCLUIR</button>
+                                    </form>
+                                    <a href="#fechar" title="Fechar" class="btn_fechar btns_modal">CANCELAR</a>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!--Botão para alterar-->
+                    <a href="#alterar" id="visualizarDados" class="btn btn_alterar"><img src="{% static 'images/icone_admin_alterar.png' %}" alt="ALterar"></a>
+                    <div id="alterar" class="modal">
+                        <div class="container_adicionar">
+                            <form method="get" class="container_formulario" action="#">
+                                <div class="container_opcoes">
+                                    <input id="id_selecao" name="id_selecao" type="text" style="display: none;" required="">
+
+                                    <input type="text" id="nome" class="caixa_input local" name="novo_nome" size="11" maxlength="40" autocomplete="off" placeholder="Nome do funcionário" required="">
+
+                                    <input type="text" id="login" class="caixa_input solicitante" name="novo_login" size="11" maxlength="20" autocomplete="off" placeholder="Login" required="">
+
+                                    <div class="container_status">
+                                        <label for="">Nível de acesso:</label>
+                                        <div class="container_radio">
+                                            <label><input type="radio" name="nivel_funcionario" value="funcionario" checked>Funcionário</label>
+                                            <label><input type="radio" name="nivel_funcionario" value="coordenador">Coordenador</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="container_status">
+                                        <label for="">Status:</label>
+                                        <div class="container_radio">
+                                            <label><input type="radio" id="ativo" name="status_usuario" value="on" checked>Ativo</label>
+                                            <label><input type="radio" id="inativo" name="status_usuario" value="off">Não ativo</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container_btns">
+                                    <button class="btn_adicionar_popup btns_modal" title="Adicionar novo usuário" type="submit" value="alterar" name="alterar">ALTERAR</button>
+                                    <a href="#fechar" title="Fechar" class="fechar btns_modal">CANCELAR</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!--Botão para adicionar-->
+                    <a href="#adicionar" class="btn btn_adicionar"><img src="{% static 'images/icone_admin_adicionar.png' %}" alt="">Adicionar</a>
+                    <div id="adicionar" class="modal">
+                        <div class="container_adicionar">
+                            <form method="POST" class="container_formulario" action="#">
+                                {% csrf_token %}
+                                <div class="container_opcoes">
+                                    <input type="text" class="caixa_input local" name="nome" size="11" maxlength="40" autocomplete="off" placeholder="Nome do funcionário" required="">
+
+                                    <input type="text" class="caixa_input solicitante" name="login" size="11" maxlength="20" autocomplete="off" placeholder="Login" required="">
+
+
+                                    <input type="password" class="caixa_input caixa_senha1" name="senha" id="senha" required size="11" minlength="8" maxlength="20" autocomplete="off" placeholder="Digite uma senha"oninput="validarSenha('senha','senha1')"/>
+                                    <h6>A senha deve ter pelo menos 8 caracteres</h6>
+
+                                    <input type="password" class="caixa_input caixa_senha2" name="senha1" id="senha1" required size="11" minlength="8" maxlength="20" autocomplete="off" placeholder="Repita a senha" oninput="validarSenha('senha','senha1')"/>
+                                    <h5 id="senha_incorreta" style="display: none;">Senhas digitadas não coincidem</h5>
+                                    
+                                    <div class="container_status">
+                                        <label for="">Nível de acesso:</label>
+                                        <div class="container_radio">
+                                            <label><input type="radio" name="nivel_funcionario" value="funcionario" checked>Funcionário</label>
+                                            <label><input type="radio" name="nivel_funcionario" value="coordenador">Coordenador</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="container_status">
+                                        <label for="">Status:</label>
+                                        <div class="container_radio">
+                                            <label><input type="radio" name="status_funcionario" value="on" checked>Ativo</label>
+                                            <label><input type="radio" name="status_funcionario" value="off">Não ativo</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container_btns">
+                                    <button id="botao_adicionar" class="btn_adicionar_popup btns_modal" title="Adicionar novo usuário" type="submit" value="adicionar" name="adicionar">ADICIONAR</button>
+                                    <a href="#fechar" title="Fechar" class="fechar btns_modal">CANCELAR</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ---TABELA--- -->
+            <section id="sessao_tabela">
+                <div class="area_tabela">
+                    <table id="tabela">
+                        <thead>
+                            <tr class="cabecalho_tabela">
+                                <th class="coluna_id">ID</th>
+                                <th>Nome</th>
+                                <th>Login</th>
+                                <th class='coluna_data'>Data de cadastro</th>
+                                <th>Nível de acesso</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="dados_tabela">
+                            {% autoescape off %}
+                            {{ dados_tabela }}
+                            {% endautoescape %}
+                        </tbody>                
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="{% static 'js/js_app_admin.js' %}"></script>
+</body>
+</html>

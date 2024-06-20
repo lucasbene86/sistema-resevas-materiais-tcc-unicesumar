@@ -1,0 +1,86 @@
+{% load static %}
+{% load permission_tags %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!-- nao vai dar zoom em mobile -->
+    <!--<meta http-equiv="refresh" content="15">-->
+    <link rel="stylesheet" href="{% static 'css/base_css.css'%}">
+    {% block conteudo_head %}
+    {% endblock conteudo_head %}
+    <link rel="icon" href="{% static 'images/icone_aba.png'%}">
+    <title>Seav Online</title>
+</head>
+<body>
+    <!--<button class="btn_menu_collapse" data-toggle="collapse" data-target="#container_collapse" style="position: fixed;"> </button>-->
+    <div id="container_menu">
+        <div class="container_logo">
+            <div class="container_versao">
+                <a class="versao" href="http://{{ host_name_server }}/versoes">v1.3.4</a>
+            </div>
+            <div class="container_usuario">
+                <div class="container_avatar">
+                    <img src="{% static 'images/avatar_user.png' %}" alt="Avatar">
+                </div>
+                <div class="container_user_logado">
+                    <h5>{{ request.user.get_short_name }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="container_btn_menu">
+                <a class="btn_reservas_equipamentos btn_menu" href="http://{{ host_name_server }}"><div class="icone_btn"><img src="{% static 'images/icone_reservas.png' %}" alt="icon"></div>RESERVAS DE EQUIPAMENTOS</a>
+
+                <a class="btn_reservas_auditorios btn_menu" href=""><div class="icone_btn"><img src="{% static 'images/icone_auditorios.png' %}" alt="icon"></div>RESERVAS DE AUDITÓRIOS</a>
+
+                <a class="btn_material_setor btn_menu" href=""><div class="icone_btn"><img src="{% static 'images/icone_materiais.png' %}" alt="icon"></div>MATERIAIS DO SETOR</a>
+
+            {% if user|can:'cadastrar_funcionarios' %}
+                <a class="btn_cadastro btn_menu" href="http://{{ host_name_server }}/admin_contas/"><div class="icone_btn"><img src="{% static 'images/icone_adicionar_funcionario.png' %}" alt="icon"></div>CADASTRO DE FUNCIONÁRIOS</a>
+            {% endif %}
+        </div>
+
+        <div class="container_btn_logout">
+            <a class="btn_configuracao btn_menu" href="http://{{ host_name_server }}/alterar_senha"><div class="icone_btn"><img src="{% static 'images/icone_alterar_senha.png' %}" alt="icon"></div>ALTERAR SENHA</a>
+            <a class="btn_logout btn_menu" href="http://{{ host_name_server }}/login/"><div class="icone_btn"><img src="{% static 'images/icone_logout.png' %}" alt="icon"></div>SAIR</a>
+        </div>
+    </div>
+
+    <!--Botão para menu-->
+    <a href="#modal_menu" id="menu_modal_link" class="botao_menu"><h4>Menu</h4></a>
+    <div id="modal_menu" class="menu_celular">
+        <div class="container_menu_celular">
+            <a href="#fechar_menu" title="Fechar_menu" class="fechar_menu">x</a>
+            <div class="container_logo_celular">
+                <div class="container_versao">
+                    <a class="versao" href="http://{{ host_name_server }}/versoes">v1.3.4</a>
+                </div>
+            </div>
+
+            <div class="container_btn_menu_celular">
+                <a class="btn_reservas_equipamentos btn_menu" href="http://{{ host_name_server }}/"><div class="icone_btn"><img src="{% static 'images/icone_reservas.png' %}" alt="icon"></div>RESERVAS DE EQUIPAMENTOS</a>
+
+                <a class="btn_reservas_auditorios btn_menu" href=""><div class="icone_btn"><img src="{% static 'images/icone_auditorios.png' %}" alt="icon"></div>RESERVAS DE AUDITÓRIOS</a>
+
+                <a class="btn_material_setor btn_menu" href=""><div class="icone_btn"><img src="{% static 'images/icone_materiais.png' %}" alt="icon"></div>MATERIAIS DO SETOR</a>
+
+            {% if user|can:'cadastrar_funcionarios' %}
+                <a class="btn_cadastro btn_menu" href="http://{{ host_name_server }}/admin_contas/"><div class="icone_btn"><img src="{% static 'images/icone_adicionar_funcionario.png' %}" alt="icon"></div>CADASTRO DE FUNCIONÁRIOS</a>
+            {% endif %}
+            </div>
+
+            <div class="container_btn_logout">
+                <a class="btn_configuracao btn_menu" href="http://{{ host_name_server }}/alterar_senha/"><div class="icone_btn"><img src="{% static 'images/icone_alterar_senha.png' %}" alt="icon"></div>ALTERAR SENHA</a>
+                <a class="btn_logout btn_menu" href="http://{{ host_name_server }}/login/"><div class="icone_btn"><img src="{% static 'images/icone_logout.png' %}" alt="icon"></div>SAIR</a>
+            </div>
+        </div>
+    </div>
+
+    {% block conteudo_base %}
+
+    {% endblock conteudo_base %}
+</body>
+</html>

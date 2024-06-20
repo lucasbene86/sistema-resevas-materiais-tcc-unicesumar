@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:target {
+    scroll-margin-top: .8em;
+}
+
+
+/*---------------------------------------PAGINA BASE---------------------------------------*/
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* -------------CONTAINER MENU------------- */
+.btn_menu_collapse{
+    background-image: url('../images/icone_menu.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: transparent;
+    width: 2rem;
+    height: 2rem;
+}
+
+
+#container_menu{
+    background-color: #303e48;
+    width: 17vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*-----MENU(LOGO)-----*/
+.container_logo{
+    height: 25vh;
+    width: 100%;
+    background-image: url('../images/seav_logo.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 70%;
+    background-color: #263239;
+    display: flex;
+    align-items:flex-end;
+    flex-direction: column;
+}
+
+.container_versao{
+    width: 20%;
+    height: 60%;
+    padding-top: 1%;
+}
+.versao{
+    text-decoration: none;
+    color: rgb(248, 248, 248);
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+.versao:hover{
+    font-size: 0.8rem;
+}
+
+
+.container_usuario{
+    width: 100%;
+    height: 40%;
+    display: flex;
+}
+.container_avatar{
+    left: 100px;
+    width: 4rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:end;
+}
+.container_avatar img{
+    width: 3rem;
+}
+
+.container_user_logado{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+.container_user_logado h5{
+    color: rgb(248, 248, 248);
+    font-weight: 400;
+}
+
+/*-----MENU(LOGOUT)-----*/
+.container_btn_menu{
+    width: 100%;
+    height: 55vh;
+}
+
+.btn_menu{
+    background-color: transparent;
+    text-decoration:none;
+    cursor: pointer;
+    width: 100%;
+    height: 4rem;
+    font-size: 75%;
+    font-weight: 500;
+    text-align:left;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+    color: #98abb9;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+
+.icone_btn{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.btn_menu img{
+    width: 18px;
+}
+
+.btn_menu:hover{
+    color: #ffff;
+    background-color: #607d96;
+}
+/*-----MENU(LOGOUT)-----*/
+.btn_configuracao img{
+    width: 20px;
+}
+
+.btn_logout img{
+    width: 20px;
+}
+
+.container_btn_logout{
+    width: 100%;
+    height: 20vh;
+}
+
+
+/*>>>>>>>>>>>>>>>>> POP UP MENU OPÇÕES <<<<<<<<<<<<<<<<<*/
+.botao_menu{
+    position: fixed;
+    text-decoration: none;
+    background-color: #303e48;
+    width: 2.5rem;
+    height: 2.5rem;
+    transform: translate(-100%);
+    transition: all 0.2s;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 96vw;
+    margin-top: 65vh;
+    display: none;
+}
+.botao_menu:hover{
+    width: 25vw;
+}
+
+.botao_menu h4{
+    color: #e7e7e7;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.2s;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+}
+.botao_menu h4:hover{
+    opacity: 1;
+    font-size: 100%;
+}
+
+.botao_menu{
+    background-image: url("../images/icone_menu.png");
+}
+.botao_menu:hover{
+    background-color: #db3348;
+    background-image: none;
+}
+
+
+/* ============================================================== */
+
+.container_menu_celular{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.fechar_menu {
+    position: absolute;
+    width: 30px;
+    right: -15px;
+    top: -20px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 5px;
+    background: #ff4545;
+    background-image: url('/static/images/x.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    font-size: 0;
+}
+
+/*Configuração do modal*/
+.container_logo_celular{
+    background-image: url('../images/seav_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 130px;
+    height: 90px;
+}
+.menu_celular {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 99999;
+    opacity:0;
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-transition: opacity 150ms ease-in;
+    -moz-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+    pointer-events: none;
+}
+
+.menu_celular:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu_celular > div {
+    border-radius: 5px;
+    width: 300px;
+    position: relative;
+    margin: 15% auto;
+    background-color: #364651;
+}
+
+
+
+/*================== OCULTOS ===================*/
+.btn_reservas_auditorios, .btn_material_setor{
+    display: none;
+}
+
+
+
+/*======================= RESPONSIVIDADE ====================*/
+/*CELULAR*/
+@media only screen and (max-width: 900px){
+    /*>>>>>>>>>>>>>> CONTAINER MENU <<<<<<<<<<<<<<<<*/
+    #container_menu{
+        display: none;
+    }
+
+
+    /*>>>>>>>>>>>>>>>>>>> BOTÕES POP UP <<<<<<<<<<<<<<<<*/
+    #menu_modal_link{
+        display: initial;
+    }
+
+    .container_versao{
+        padding-top: 2%;
+        padding-left: 90%;
+        width: 100%;
+        font-weight: 100;
+    }
+
+    /*BOTÕES MENU CELULAR*/
+    .container_btn_menu_celular{
+        width: 100%;
+    }
+    .btn_menu{
+        padding-left: 3rem;
+        color: #95a4af;
+    }
+}

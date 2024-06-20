@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% load permission_tags %}
+
+
+{% block conteudo_head %}
+<link rel="stylesheet" href="{% static 'css/estilo_versoes.css' %}">
+{% endblock conteudo_head %}
+
+
+{% block conteudo_base %}
+<div class="area_versoes">
+    <!-- TITULO -->
+    <section id="titulo">
+        <div class="titulo">
+            <h2>Notas das Versões do sistema</h2>
+            <h4>Informações de atualizações do sistema Seav Online.</h4>
+        </div>
+    </section>
+    <!-- FIM TITULO -->
+
+    <!-- TABELA VERSÕES -->
+    <section id="tabela">
+        <div class="area_tabela">
+            <table class="tabela">
+                <thead>
+                    <th>RELEASE VERSION</th>
+                    <th>RELEASE DATE</th>
+                    <th>CLICK FOR MORE</th>
+                </thead>
+                <tbody>
+                    <tr class="linhas_tabela">
+                        <td>Seav Online v1.3.4</td>
+                        <td>Outubro, 11, 2022</td>
+                        <td class="nota_link_release"><a href="#versao_1.3.4">Release notes</a></td>                    
+                    </tr>
+                    <tr class="linhas_tabela">
+                        <td>Seav Online v1.2.3</td>
+                        <td>Agosto, 26, 2022</td>
+                        <td class="nota_link_release"><a href="#versao_1.2.3">Release notes</a></td>                    
+                    </tr>
+                    <tr class="linhas_tabela">
+                        <td>Seav Online v1.2.2</td>
+                        <td>Agosto, 25, 2022</td>
+                        <td class="nota_link_release"><a href="#versao_1.2.2">Release notes</a></td>                    
+                    </tr>
+                    <tr class="linhas_tabela">
+                        <td>Seav Online v1.1.1</td>
+                        <td>Agosto, 18, 2022</td>
+                        <td class="nota_link_release"><a href="#versao_1.1.1">Release notes</a></td>                    
+                    </tr>
+                </tbody>
+            </table>
+        </div>                
+    </section>
+    <!-- FIM TABELA VERSÕES -->
+
+    <!-- DESCRIÇÃO DE VERSÕES -->
+    <section id="descricao">
+
+        <article class="descricao">
+            <section id="versao_1.3.4">
+                <h2 class="versao_release">Release Seav Online v1.3.4</h2>
+                <h5>Data: Outubro, 11, 2022</h5>
+                <dl>
+                    <dt>Build</dt>
+                        <dd>• Adicionada a scrollbar para tebela de equipamentos.</dd>
+                </dl>
+            </section>
+        </article>
+
+        <article class="descricao">
+            <section id="versao_1.2.3">
+                <h2 class="versao_release">Release Seav Online v1.2.3</h2>
+                <h5>Data: Agosto, 26, 2022</h5>
+                <dl>
+                    <dt>Correção de bug</dt>
+                        <dd>• Corrigido o erro do autocomplete na alteração de equipamentos.</dd>
+                    <dt>Build</dt>
+                        <dd>• Botão de status de equipamentos marcação automática na alteração.</dd>
+                </dl>
+            </section>
+        </article>
+
+        <article class="descricao">
+            <section id="versao_1.2.2">
+                <h2 class="versao_release">Release Seav Online v1.2.2</h2>
+                <h5>Data: Agosto, 25, 2022</h5>
+                <dl>
+                    <dt>Funções</dt>
+                        <dd>• Adicionada a opção de "Outros equipamentos".</dd>
+                    <dt>Build</dt>
+                        <dd>• Melhoria no código para alteração de equipamentos.</dd>
+                        <dd>• Tabela de reservas de equipamentos agora é ordenada por horários.</dd>
+                    <dt>Layout</dt>
+                        <dd>• Novo estilo visual para os botões de Adicionar, Alterar e Excluir.</dd>
+                </dl>
+            </section>
+        </article>
+
+        <article class="descricao">
+            <section id="versao_1.1.1">
+                <h2 class="versao_release">Release Seav Online v1.1.1</h2>
+                <h5>Data: Agosto, 18, 2022</h5>
+                <dl>
+                    <dt>Segurança</dt>
+                        <dd>• Melhoria no módulo de verificação do login.</dd>
+                    <dt>Layout</dt>
+                        <dd>• Adicionada a página de Release version.</dd>
+                </dl>
+            </section>
+        </article>
+
+    </section>
+    <!-- FIM DESCRIÇÃO DE VERSÕES -->
+
+</div>
+{% endblock conteudo_base %}

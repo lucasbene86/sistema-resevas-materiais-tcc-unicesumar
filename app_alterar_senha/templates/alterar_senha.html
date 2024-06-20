@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% load permission_tags %}
+
+
+{% block conteudo_head %}
+<link rel="stylesheet" href="{% static 'css/alterar_senha.css' %}">
+{% endblock conteudo_head %}
+
+
+{% block conteudo_base %}
+<div class="conteiner_area_alterar_senha">
+    <div class="container_senha">
+        <div class="titulo">
+            <h2>Alteração de senha</h2>
+            <h4>Sua senha deve conter no minimo 8 e no máximo 20 caracteres.</h4>
+        </div>
+        <form method="POST" class="container_formulario" action="#">
+            {% csrf_token %}
+            <div class="container_opcoes">
+                <label class="cabecalho" for="">Digite a senha atual</label>
+                <input type="password" class="caixa_input caixa_senha_atual" name="senha_atual" id="senha_atual" required size="11" minlength="8" maxlength="20" autocomplete="off" placeholder="Digite a senha atual"/>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == "error" %}
+                            <h5 class="senha_incorreta">A senha digitada está incorreta!</h5>
+                        {% else %}
+                            <script>
+                                alert('Senha alterada com sucesso! Faça o login novamete.')
+                            </script>
+                            <meta http-equiv="refresh" content=0;>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                <label class="cabecalho" for="">Digite a nova senha</label>
+                <input type="password" class="caixa_input caixa_senha1" name="senha" id="senha" required size="11" minlength="8" maxlength="20" autocomplete="off" placeholder="Digite a nova senha"oninput="validarSenha('senha','senha1')"/>
+
+                <label class="cabecalho" for="">Repita a senha</label>
+                <input type="password" class="caixa_input caixa_senha2" name="senha1" id="senha1" required size="11" minlength="8" maxlength="20" autocomplete="off" placeholder="Repita a senha" oninput="validarSenha('senha','senha1')"/>
+                <h5 id="senha_incorreta" class="senha_incorreta" style="display: none;">Senhas digitadas não coincidem</h5>
+            </div>
+
+            <div class="container_btns">
+                <button onclick="SenhaAlterada" id="botao_alterar" class="btn_alterar_senha" title="Alterar senha" type="submit" value="alterar" name="alterar">ALTERAR</button>
+            </div>
+        </form>
+    </div>    
+</div>
+<script src="{% static 'js/js_alterar_senha.js' %}"></script>
+{% endblock conteudo_base %}

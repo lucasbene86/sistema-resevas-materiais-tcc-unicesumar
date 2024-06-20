@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:target {
+    scroll-margin-top: .8em;
+}
+
+/*--------------CONTAINER FUNDO----------------*/
+.container_fundo{
+    background-color: #263239;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*-----CONTAINER MENSAGEM DE BLOQUEIO-------*/
+.bloqueio{
+    background-color: #963333;
+    width: 50%;
+    height: 2rem;
+    color: rgb(231, 231, 231);
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.bloqueio h3{
+    font-weight: 300;
+    font-size: 100%;
+}
+.bloqueio img{
+    width: 25%;
+}
+.esquerda{
+    width: 10%;
+    height: 100%;
+}
+.meio{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.direita{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+ 
+}
+
+/*-----CONTAINER FORMULARIO + LOGO-----*/
+.container_forms{
+    width: 25rem;
+    height: 25rem;
+    margin-bottom: 5%;
+}
+
+/*-----CONTAINER FORMULARIO + LOGO (CONTAINER LOGO)-----*/
+.container_logo{
+    width: 100%;
+    height: 40%;
+    background-image: url('../images/logo_seav.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+}
+
+/*----CONTAINER FORMULARIO + LOGO (FORMULARIO)-----*/
+.form_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input_login{
+    width: 85%;
+    height: 2.6rem;
+    margin-top: 12px;
+    font-size: 100%;
+    padding-left: 5%;
+    border-radius: 3px;
+}
+
+.btn_entrar{
+    width: 85%;
+    height: 2.6rem;
+    margin-top: 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #546c9f;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+
+.btn_entrar:hover{
+    background-color: #3c558b;
+}
+
+/*-----------------------------------------------------------*/
+/*======================= RESPONSIVIDADE ====================*/
+/*CELULAR*/
+@media only screen and (max-width: 900px){
+    /*>>>>>>>>>>>>>> CONTAINER MENSAGEM BLOQUEIO <<<<<<<<<<<<<<<<*/
+    .bloqueio{
+        width: 80%;
+        height: 6rem;
+    }
+    .bloqueio img{
+        width: 80%;
+    }
+    /*----------------------------------------------*/
+    /*>>>>>>>>>>>>>> CONTAINER FORMULARIO <<<<<<<<<<<<<<<<*/
+    .container_forms{
+        width: 90%;
+        height: 50%;
+    }
+}

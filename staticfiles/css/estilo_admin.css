@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:target {
+    scroll-margin-top: .8em;
+}
+/* ---------------------CONTAINER FUNDO---------------------- */
+#container_fundo{
+    background-color: #263239;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.area_crud{
+    background-color: #ededed;
+    width: 80vw;
+    height: 80vh;
+}
+/* ------- OPÇÃO RAPIDA ----- */
+.opcao_rapida{
+    width: 95vw;
+    height: 4rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.opcao_rapida h5{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 1%;
+    color: #c7c7c7;
+    font-weight: 400;
+}
+.opcao_rapida div{
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+
+.opcao_rapida a{
+    text-decoration: none;
+    font-size: 80%;
+    height: 1rem;
+    margin-right: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    color: #c7c7c7;
+    font-weight: 300;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.opcao_rapida a:hover{
+    color: #e74a1a;
+}
+
+/* ------- AREA BOTÃO ------- */
+.area_botao{
+    background-color: #303e48;
+    width: 100%;
+    height: 20%;
+    display: flex;
+}
+
+.cabecalho{
+    background-color: #303e48;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.cabecalho h4{
+    padding-left: 2rem;
+    font-weight: 300;
+    font-size: 130%;
+    color: #eaeaea;
+}
+
+
+/*-------BOTÃO-------*/
+.botoes_area{
+    background-color: #303e48;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn{
+    margin-right: 5px;
+    color: #ececec;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100%;
+    cursor: pointer;
+    opacity: 80%;
+    transition: opacity 150ms ease-in;
+}
+.btn:hover{
+    opacity: 100%;
+}
+
+.btn_excluir{
+    background-color: #d34545;
+    width: 3rem;
+}
+
+.btn_alterar{
+    background-color: #e4b529;
+    width: 3rem;
+}
+
+.btn_adicionar{
+    background-color: #437e60;
+    text-decoration: none;
+    width: 9rem;
+}
+.btn_adicionar img{
+    margin-right: 7px;
+}
+
+/* ------------------- TEBELA ------------------ */
+#sessao_tabela{
+    background-color: #eaeaea;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabecalho_tabela{
+    height: 3rem;
+}
+.cabecalho_tabela th{
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.area_tabela{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+ 
+#tabela{
+    background-color: #eaeaea;
+    width: 100%;
+    color: #303e48;
+    border-collapse: collapse; 
+}
+.dados_tabela td{
+    text-align: center;
+    height: 3rem;
+}
+.imagen_status{
+    width: 10%;
+}
+
+/* Seleção */
+#tabela tr td{
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+#tabela tr:hover td{
+    background-color: #d8d8d8;
+}
+#tabela tr.selecionado td{
+    background-color: #c5c5c5;
+}
+
+/*Oculto*/
+.coluna_id{
+    background-color: #adadad;
+    display: none;
+}
+/*-------------------------------------POP UP EXCLUIR--------------------------------------*/
+/*Configuração do modal*/
+.modal_excluir {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 99999;
+    opacity:0;
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-transition: opacity 150ms ease-in;
+    -moz-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+    pointer-events: none;
+}
+
+.modal_excluir:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal_excluir > div {
+    border-radius: 5px;
+    width: 400px;
+    height: 90px;
+    position: relative;
+    margin: 15% auto;
+    background: rgb(255, 255, 255);
+}
+
+/* BOTÕES EXCLUIR E CANCELAR */
+.container_btns_excluir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btns_modal{
+    width: 7rem;
+    height: 2rem;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.btn_excluir_popup{
+    background-color: transparent;
+    border: 1px solid #4e606d;
+    color: #4e606d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn_excluir_popup:hover{
+    background-color: #4e606d;
+    color: #ffffff;
+}
+
+.btn_fechar {
+    background-color: #4e606d;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-left: 70px;
+    transition: background-color 0.3s;
+}
+.btn_fechar:hover {
+    background-color: #303e48;
+}
+
+/*---------------*/
+.container_texto{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container_atencao{
+    margin-right: 0.3rem;
+    background-image: url('../images/icone_alerta.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/*------------------------------------POP UP ADICIONAR-------------------------------------*/
+.container_adicionar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+/*Configuração do modal*/
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 150ms ease-in;
+    -moz-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+    pointer-events: none;
+}
+
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal > div {
+    border-radius: 5px;
+    width: 350px;
+    position: relative;
+    margin: 4% auto;
+    background: rgb(255, 255, 255);
+}
+/*Final de configuração do modal*/
+
+/* -------CONTAINER OPÇÕES------- */
+.container_opcoes{
+    display: flex;
+    flex-direction: column;
+}
+.container_opcoes h6{
+    font-weight: 400;
+    text-align: center;
+}
+
+.caixa_input{
+    color: #2e2e2e;
+    margin-top: 10px;
+    font-size: 100%;
+    border-bottom: 1px solid #777777;
+    background-color: transparent;
+    height: 2.5rem;
+    padding-left: 10px;
+    padding-top: 20px;
+    font-size: 90%;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.caixa_input:focus{
+    border-bottom: 2px solid #474747;
+    height: 2.5rem;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+#senha_incorreta{
+    font-weight: 400;
+    color: #ad2b2b;
+}
+
+.caixa_senha2{
+    margin-top: 0;
+}
+
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/*-----------------*/
+/*Status*/
+.container_status{
+    margin-top: 1rem;
+    font-size: 90%;
+}
+.container_radio{
+    display: flex;
+    flex-direction: column;
+}
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* -------BOTÕES ADICIONAR E CANCELAR------- */
+.container_btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.btn_adicionar_popup{
+    background-color: #4e606d;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.btn_adicionar_popup:hover{
+    background-color: #303e48;
+}
+
+.fechar {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #4e606d;
+    color: #4e606d;
+    margin-left: 40px;
+    transition: background-color 0.3s;
+}
+.fechar:hover {
+    background-color: #303e48;
+    text-align: center;
+    color: #ffffff;
+}

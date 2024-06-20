@@ -1,0 +1,657 @@
+/* -------------CONTAINER AREA DE TABELA-tabela------------ */
+#container_area_tabela{
+    width: 83vw;
+    height: 100vh;
+}
+
+/*-----AREA TABELA(TOPO)-----*/
+.container_topo{
+    height: 12vh;
+    display: flex;
+}
+
+.container_calendario{
+    width: 10vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container_selecao_data{
+    width: 70vw;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.container_btn_estatistica_equipamentos{
+    width: 3rem;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn_estatistica_equipamentos{
+    width: 1.7rem;
+    height: 1.7rem;
+    background-image: url("../images/icone_btn_estatistica_reservas.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.btn_estatistica_equipamentos:hover{
+    width: 1.9rem;
+    height: 1.9rem;
+}
+
+.btn_data{
+    background-image: url('../images/icone_pesquisar.png');
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-left: 3%;
+    cursor: pointer;
+    display: none;
+}
+
+.form_btn_logout{
+    display: flex;
+    align-items: center;
+}
+
+.calendario{
+    background-image: url('../images/icone_calendario.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.calendario h4{
+    color: #ffff;
+    margin-top: 15%;
+}
+
+.calendario h2{
+    margin-left: -30%;
+}
+
+
+/*-----AREA TABELA(TABELA)-----*/
+.container_tabela{
+    width: 83vw;
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.area_tabela{
+    overflow: auto;
+}
+
+#tabela{
+    width: 95%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+/* Seleção */
+#tabela tr td{
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+#tabela tr:hover td{
+    background-color: #e7e7e7;
+}
+#tabela tr.selecionado td{
+    background-color: #dadada;
+}
+
+.cabecalho{
+    font-size: 80%;
+    color: rgb(36, 36, 36);
+    font-weight: 600;
+}
+
+th{
+    border-bottom: 1px solid rgb(197, 197, 197);
+    font-weight: 700;
+    padding-bottom: 1rem;
+}
+
+td{
+    font-weight: 500;
+    height: 3rem;
+    font-size: 80%;
+}
+
+.imagem_equipamento img{
+    margin-left: 5%;
+}
+
+.quatidade_equi{
+    margin-left: 1%;
+}
+
+.coluna_id{
+    background-color: #ff9f9f;
+    display: none;
+}
+
+
+#tabela tr:nth-child(even){
+    background: rgb(245, 248, 255)
+}
+
+/* ========================================== BOTÕES OPÇÕES TABELA ========================================== */
+#sessao_botoes_menu{
+    width: 10vw;
+    height: 25vh;
+    position: fixed;
+    display: flex;
+    margin-top: 70vh;
+    margin-left: 88%;
+    align-items: center;
+    flex-direction:column-reverse;
+    justify-content: center;
+}
+
+
+.botoes_opcoes_tabela{
+    margin-left: 100%;
+    text-decoration: none;
+    background-color: #303e48;
+    width: 2.5rem;
+    height: 2.5rem;
+    transform: translate(-50%);
+    transition: all 0.2s;
+    margin-bottom: 1rem;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.botoes_opcoes_tabela:hover{
+    width: 8vw;
+}
+
+.botoes_opcoes_tabela h4{
+    color: #e7e7e7;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.2s;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+}
+.botoes_opcoes_tabela h4:hover{
+    opacity: 1;
+    font-size: 100%;
+}
+
+
+.botao_adicionar{
+    background-image: url("../images/icone_btn_adicionar.png");
+}
+.botao_adicionar:hover{
+    background-color: rgb(61, 182, 101);
+    background-image: none;
+}
+
+.botao_alterar{
+    background-image: url("../images/icone_btn_alterar.png");
+}
+.botao_alterar:hover{
+    background-color: #57afc4;
+    background-image: none;
+}
+
+.botao_excluir{
+    background-image: url("../images/icone_btn_excluir_vermelho.png");
+}
+.botao_excluir:hover{
+    background-color: #db3348;
+    background-image: none;
+}
+
+/* >>>>>>>>>>>>>>>>  MODAL ADICIONAR EQUIPAMENTO  <<<<<<<<<<<<<<<<<< */
+.container_adicionar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+/*Configuração do modal*/
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 150ms ease-in;
+    -moz-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+    pointer-events: none;
+}
+
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal > div {
+    border-radius: 5px;
+    width: 400px;
+    position: relative;
+    margin: 1% auto;
+    background: rgb(255, 255, 255);
+}
+/*Final de configuração do modal*/
+
+/* -------CONTAINER OPÇÕES------- */
+.container_opcoes{
+    display: flex;
+    flex-direction: column;
+}
+
+.caixa_input{
+    color: #2e2e2e;
+    margin-top: 10px;
+    font-size: 100%;
+    border-bottom: 1px solid #777777;
+    background-color: transparent;
+    height: 2.5rem;
+    padding-left: 10px;
+    padding-top: 20px;
+    font-size: 90%;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.caixa_input:focus{
+    border-bottom: 2px solid #474747;
+    height: 2.5rem;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.container_equipamentos{
+    margin-top: 10px;
+    font-size: 90%;
+}
+
+.equipamentos_usados{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.quantidade{
+    border: 1px solid #adadad;
+    border-radius: 8px;
+    padding-left: 10px;
+    margin-bottom: 4px;
+    width: 3rem;
+    margin-right: 5px;
+}
+.quantidade:focus{
+    border: 1px solid #adadad;
+    border-radius: 8px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/*Horario*/
+.container_horario{
+    font-size: 90%;
+}
+
+.horario{
+    border: 1px solid #adadad;
+    border-radius: 8px; 
+    color: #3b3b3b;
+    font-size: 110%;
+    cursor: pointer;
+}
+.horario:focus{
+    border: 1px solid #adadad;
+    border-radius: 8px; 
+}
+/*-----------------*/
+/* Data */
+.container_data{
+    margin-top: 10px;
+    font-size: 90%;
+}
+.input_calendario{
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.input_calendario:focus{
+    border: 1px solid rgb(36, 36, 36);
+    border-radius: 5px;
+}
+
+/*Departamento*/
+.container_departamento{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 90%;
+}
+
+.caixa_suspensa{
+    border: 1px solid #adadad;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.caixa_suspensa:focus{
+    border: 1px solid #adadad;
+    border-radius: 8px;
+}
+
+/*Status*/
+.container_status{
+    margin-top: 5px;
+    font-size: 90%;
+}
+.container_radio{
+    display: flex;
+    flex-direction: column;
+}
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* -------BOTÕES ADICIONAR E CANCELAR------- */
+.container_btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btns_modal{
+    width: 7rem;
+    height: 2rem;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.btn_adicionar{
+    background-color: #4e606d;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.btn_adicionar:hover{
+    background-color: #303e48;
+}
+
+.fechar {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #4e606d;
+    color: #4e606d;
+    margin-left: 40px;
+    transition: background-color 0.3s;
+}
+.fechar:hover {
+    background-color: #303e48;
+    text-align: center;
+    color: #ffffff;
+}
+
+
+/*>>>>>>>>>>>>>>>>>>> POP UP EXCLUIR EQUIPAMENTO <<<<<<<<<<<<<<<<*/
+
+
+.container_excluir{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/*Configuração do modal*/
+.modal_excluir {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 99999;
+    opacity:0;
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-transition: opacity 150ms ease-in;
+    -moz-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+    pointer-events: none;
+}
+
+.modal_excluir:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal_excluir > div {
+    border-radius: 5px;
+    width: 400px;
+    position: relative;
+    margin: 15% auto;
+    background: rgb(255, 255, 255);
+}
+
+/* BOTÕES EXCLUIR E CANCELAR */
+.container_btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.btn_excluir{
+    background-color: transparent;
+    border: 1px solid #4e606d;
+    color: #4e606d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn_excluir:hover{
+    background-color: #4e606d;
+    color: #ffffff;
+}
+
+.btn_fechar {
+    background-color: #4e606d;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+.btn_fechar:hover {
+    background-color: #303e48;
+}
+
+/*---------------*/
+.container_texto{
+    margin-top: 3%;
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container_atencao{
+    margin-right: 0.3rem;
+    background-image: url('../images/icone_alerta.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/*Final de configuração do modal*/
+
+
+/*-----------------------------------------------------------------------*/
+/*=========================== AREA ESTATISTICA ==========================*/
+.conteiner_area_estatistica{
+    width: 87vw;
+    height: 100vh;
+    background-color: #607d96;
+}
+
+
+/*================== OCULTOS ===================*/
+.container_btn_estatistica_equipamentos{
+    display: none;
+}
+
+
+/*-----------------------------------------------------------*/
+/*======================= RESPONSIVIDADE ====================*/
+/*CELULAR*/
+@media only screen and (max-width: 900px){
+
+    /*----------------------------------------------*/
+    .container_selecao_data{
+        width: 75%;
+    }
+    .container_topo{
+        display: flex;
+        justify-content: center;
+    }
+    .selecao_data{
+        padding-right: 5%;
+     }
+    .container_calendario{
+        width: 25%;
+    }
+    #container_area_tabela{
+        width: 100vw;
+    }
+
+    .cabecalho{
+        font-size: 60%;
+    }
+    td{
+        font-size: 60%;
+    }
+    .container_tabela{
+        width: 100vw;
+    }
+    .coluna_departamento{
+        display: none;
+    }
+    .coluna_equipamento{
+       display: none;
+    }
+    .coluna_status img{
+        height: 40%;
+    }
+
+    /*-------------------------------------------------*/
+
+    /* BOTÕES DO TABELA */
+    #sessao_botoes_menu{
+        width: 30vw;
+        height: 25vh;
+        margin-top: 73vh;
+        margin-left: 66vw;
+    }
+
+    .botoes_opcoes_tabela:hover{
+        width: 28vw;
+    }
+
+    .botoes_opcoes_tabela h4{
+        color: #e7e7e7;
+        height: 100%;
+        opacity: 0;
+        transition: all 0.2s;
+        font-size: 0;
+        display: flex;
+        align-items: center;
+        padding-left: 3%;
+    }
+
+
+    /*POP UP deletar item*/
+    .modal_excluir > div {
+        border-radius: 5px;
+        width: 300px;
+        position: relative;
+        margin: 50% auto;
+    }
+    .container_texto{
+        margin-top: 3%;
+        width: 100%;
+        height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 80%;
+    }
+
+    /*POP UP Alterar item*/
+    .modal > div {
+        width: 300px;
+    }
+    .container_formulario{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 270px;
+        height: 87vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .horarios{
+        display: flex;
+        flex-direction: column;
+    }
+    .horarios label{
+        font-size: 80%;
+    }
+    .fechar {
+        margin-left: 30px;
+    }
+
+}

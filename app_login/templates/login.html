@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="icon" href="{% static 'images/icone_aba.png'%}">
+    <title>Login - Seav Online</title>
+</head>
+<body>
+    <div class="container_fundo">
+        <div class="bloqueio" {{ nao_visivel }}>
+            <div class="esquerda"></div>
+            <div class="meio"><h3>{{ login }}</h3></div>
+            <div class="direita"><img src="{% static 'images/icone_cadeado.png' %}" alt="Cadeado"></div>
+        </div>
+        <div class="container_forms">
+            <div class="container_logo"></div>
+            <div class="container_campos">
+                <form class="form_login" method='POST' action='#'>
+                    {% csrf_token %}
+                    <input type="text" class="input_login" name="usuario" autocomplete="off" placeholder="Usuário" required="">
+                    <input type="password" class="input_login" name="senha" autocomplete="off" placeholder="Senha" required="">
+                    <button class="btn_entrar" type="submit" name="Next">ENTRAR</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

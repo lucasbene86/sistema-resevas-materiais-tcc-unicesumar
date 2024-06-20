@@ -1,0 +1,88 @@
+.conteiner_area_alterar_senha{
+    width: 83vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_senha{
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo{
+    width: 80%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titulo h2, h4{
+    font-weight: 500;
+}
+
+
+.container_senha{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_formulario{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 75%;
+    display: flex;
+}
+
+.container_opcoes{
+    display: flex;
+    flex-direction: column;
+}
+
+.cabecalho{
+    margin-top: 15px;
+    font-size: 90%;
+}
+
+.caixa_input{
+    color: #2e2e2e;
+    border: 1px solid #777777;
+    border-radius: 4px;
+    background-color: transparent;
+    width: 20rem;
+    height: 2.5rem;
+    padding-left: 10px;
+    font-size: 95%;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.caixa_input:focus{
+    border-bottom: 2px solid #474747;
+    height: 2.5rem;
+    padding-left: 10px;
+}
+.senha_incorreta{
+    font-weight: 400;
+    color: #ad2b2b;
+}
+
+
+.btn_alterar_senha{
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 8rem;
+    height: 2rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    background-color: #4e606d;
+    transition: all 0.1s ease-in-out;  /*Efeito de transição suave*/
+}
+.btn_alterar_senha:hover{
+    background-color: #303e48;
+}

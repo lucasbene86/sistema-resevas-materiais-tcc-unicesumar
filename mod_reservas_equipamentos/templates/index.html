@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% load static %}
+{% load permission_tags %}
+
+    {% block conteudo_head %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css'%}">
+    {% endblock conteudo_head %}
+
+
+    {% block conteudo_base %}
+    <div id="container_area_tabela">
+        <div class="container_topo">
+            <div class="container_calendario">
+                <div class="calendario">
+                    <h4>{{ mes }}</h4>
+                    <h2>{{ dia }}</h2>
+                </div>
+            </div>
+            <div class="container_selecao_data">
+                <div class="container_btn_estatistica_equipamentos">
+                    <form class="form_btn_estatistica" method='get' action='#'>
+                        <button class="btn_estatistica_equipamentos" title="Estatistica" type="submit" value="estatistica" name="estatistica"> </button>
+                    </form>
+                </div>
+                <div class="selecao_data">
+                    <form id="formulario_data" class="form_btn_logout" method='POST' action='#'>
+                        {% csrf_token %}
+                        <input id="selecionar_data" onkeydown="return false" class="input_calendario" name="bday" type="date" min="2022-01-01" max="2030-12-31" value="{{ data_atual }}" oninput="checkAndSubmit()">
+                        <button class="btn_data" type="submit" value="#data" name="Next"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container_tabela">
+            <div class="container_tabela area_tabela">
+                <table id="tabela">
+                    <thead>
+                        <tr class="cabecalho">
+                            <th class="coluna_id">ID</th>
+                            <th>SALA/LOCAL</th>
+                            <th>HORÁRIO</th>
+                            <th>SOLICITANTE</th>
+                            <th class="coluna_departamento">DEPART.</th>
+                            <th class="coluna_equipamento">EQUIPAMENTOS</th>
+                            <th>STATUS</th>
+                            <th>OBSERVAÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody class="dados_tabela">
+                        {% autoescape off %}
+                        {{ dados_tabela }}
+                        {% endautoescape %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <section id="sessao_botoes_menu">
+
+        <!--Botão para excluir-->
+        <a href="#excluir" id="excluir_dados" class="botoes_opcoes_tabela botao_excluir"><h4>Excluir</h4></a>
+        <div id="excluir" class="modal_excluir">
+            <div class="container_excluir">
+                    <div class="container_texto">
+                        <div class="container_atencao"></div>
+                        <label>Deseja apagar o item selecionado?</label>
+                    </div>
+
+                    <div class="container_btns">
+                        <form class="form_btn_material_setor" method='get' action='#'>
+                            <input id="id_exclusao" name="id_exclusao" type="text" style="display: none;" required="">
+                            <button class="btn_excluir btns_modal" title="Apagar item" type="submit" value="excluir" name="excluir">EXCLUIR</button>
+                        </form>
+                        <a href="#fechar" title="Fechar" class="btn_fechar btns_modal">CANCELAR</a>
+                    </div>
+            </div>
+        </div>
+
+
+        <!--Botão para alterar-->
+        <a href="#alterar" id="visualizarDados" class="botoes_opcoes_tabela botao_alterar"><h4>Alterar</h4></a>
+        <div id="alterar" class="modal">
+            <div class="container_adicionar">
+                <form method="get" class="container_formulario" action="#">
+                    <div class="container_opcoes">
+                        <input id="id_selecao" name="id_selecao" type="text" style="display: none;" required="">
+
+                        <input id="local" type="text" class="caixa_input local" name="local" size="11" maxlength="40" autocomplete="off" placeholder="Local/Sala" required="">
+
+                        <input id="solicitante" type="text" class="caixa_input solicitante" name="solicitante" size="11" maxlength="40" autocomplete="off" placeholder="Solicitante" required="">
+
+                        <div class="container_equipamentos">
+                            <label class="txt_checkbox" for="">Equipamentos:</label>
+                            <div class="equipamentos_usados">
+                                <label><input id="id_note" type="number" class="quantidade" value="0" min="0" max="9" name="notebook">Notebook</label>
+                                <label><input id="id_som" type="number" class="quantidade" value="0" min="0" max="9" name="som">Som</label>
+                                <label><input id="id_projetor" type="number" class="quantidade" value="0" min="0" max="9" name="projetor">Projetor</label>
+                                <label><input ID="id_outros" type="number" class="quantidade" value="0" min="0" max="9" name="outros">Outros</label>
+                            </div>
+                        </div>
+                        <div class="container_horario">
+                            <label for="">Horário:</label>
+                            <div class="horarios">
+                                <input id="horario_inicio" class="horario_inicio horario" name="horario_inicio" type="time" >
+                                <label>até</label>
+                                <input id="horario_fim" class="horario_fim horario" name="horario_fim" type="time">
+                            </div>
+                        </div>
+
+                        <div class="container_data">
+                            <label for="">Data:</label>
+                            <div>
+                                <input class="input_calendario" name="bday" type="date" min="2022-01-01" max="2030-12-31" value="{{ data_atual }}">
+                            </div>
+
+                        </div>
+
+                        <div class="container_departamento">
+                            <label for="">Departamento:</label>
+                            <select class="caixa_suspensa" name="departamento">
+                                <option id="selecao_dcen" value="DCEN">DCEN</option>
+                                <option id="selecao_dtra" value="DTRA">DTRA</option>
+                                <option id="selecao_dchel" value="DCHEL">DCHEL</option>
+                                <option id="selecao_outros" value="outros">OUTROS</option>
+                            </select>
+                        </div>
+                        <input id="observacoes" type="text" class="caixa_input observacoes" name="observacoes" size="11" maxlength="100" autocomplete="off" placeholder="Observações" required="">
+
+                        <div class="container_status">
+                            <label for="">Status:</label>
+                            <div class="container_radio">
+                                <label><input id="id_emsala" type="radio" name="status_equipamento" value="sala">Em sala</label>
+                                <label><input id="id_retirado" type="radio" name="status_equipamento" value="retirado">Retirado</label>
+                                <label><input id="id_reserva" type="radio" name="status_equipamento" value="reserva">Reserva</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="container_btns">
+                        <button class="btn_adicionar btns_modal" title="Adicionar novo item" type="submit" value="alterar" name="alterar">ALTERAR</button>
+                        <a href="#fechar" title="Fechar" class="fechar btns_modal">CANCELAR</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!--Botão para adicionar-->
+        <a href="#adicionar" class="link_modal botoes_opcoes_tabela botao_adicionar"><h4>Adicionar</h4></a>
+        <div id="adicionar" class="modal">
+            <div class="container_adicionar">
+                <form method="get" class="container_formulario" action="#">
+                    <div class="container_opcoes">
+                        <input type="text" class="caixa_input local" name="local" size="11" maxlength="40" autocomplete="off" placeholder="Local/Sala" required="">
+
+                        <input type="text" class="caixa_input solicitante" name="solicitante" size="11" maxlength="40" autocomplete="off" placeholder="Solicitante" required="">
+
+                        <div class="container_equipamentos">
+                            <label class="txt_checkbox" for="">Equipamentos:</label>
+                            <div class="equipamentos_usados">
+                                <label><input type="number" class="quantidade" value="0" min="0" max="9" name="notebook">Notebook</label>
+                                <label><input type="number" class="quantidade" value="0" min="0" max="9" name="som">Som</label>
+                                <label><input type="number" class="quantidade" value="0" min="0" max="9" name="projetor">Projetor</label>
+                                <label><input type="number" class="quantidade" value="0" min="0" max="9" name="outros">Outros</label>
+                            </div>
+                        </div>
+                        <div class="container_horario">
+                            <label for="">Horário:</label>
+                            <div class="horarios">
+                                <input class="horario_inicio horario" name="horario_inicio" type="time" >
+                                <label>até</label>
+                                <input class="horario_fim horario" name="horario_fim" type="time">
+                            </div>
+                        </div>
+
+                        <div class="container_data">
+                            <label for="">Data:</label>
+                            <div>
+                                <input class="input_calendario" name="bday" type="date" min="2022-01-01" max="2030-12-31" value="{{ data_atual }}">
+                            </div>
+
+                        </div>
+
+                        <div class="container_departamento">
+                            <label for="">Departamento:</label>
+                            <select class="caixa_suspensa" name="departamento">
+                                <option value="DCEN">DCEN</option>
+                                <option value="DTRA">DTRA</option>
+                                <option value="DCHEL">DCHEL</option>
+                                <option value="outros">OUTROS</option>
+                            </select>
+                        </div>
+                        <input type="text" class="caixa_input observacoes" name="observacoes" size="11" maxlength="100" autocomplete="off" placeholder="Observações" required="">
+
+                        <div class="container_status">
+                            <label for="">Status:</label>
+                            <div class="container_radio">
+                                <label><input type="radio" name="status_equipamento" value="sala" checked>Em sala</label>
+                                <label><input type="radio" name="status_equipamento" value="retirado">Retirado</label>
+                                <label><input type="radio" name="status_equipamento" value="reserva">Reserva</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="container_btns">
+                        <button class="btn_adicionar btns_modal" title="Adicionar novo item" type="submit" value="adicionar" name="adicionar">ADICIONAR</button>
+                        <a href="#fechar" title="Fechar" class="fechar btns_modal">CANCELAR</a> 
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="{% static 'js/js.js' %}"></script>
+    <script src="{% static 'js/ordenar_tabela.js' %}"></script>
+    {% endblock conteudo_base %}

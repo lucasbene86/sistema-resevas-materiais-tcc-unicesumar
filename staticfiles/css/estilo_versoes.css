@@ -1,0 +1,100 @@
+/* ==================CONTAINER AREA DE VERSÕES================== */
+.area_versoes{
+    width: 83vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* -----------------SESSÃO TITULO---------------- */
+#titulo{
+    width: 80%;
+    height: 25vh;
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+}
+
+.titulo h2, h4{
+    font-weight: 500;
+}
+
+/* ---------------SESSÃO TABELA VERSÕES---------------- */
+#tabela{
+    width: 80%;
+    height: 40vh;
+    min-height: 40vh;
+}
+
+.area_tabela{
+    width: 70%;
+    height: 30vh;
+    overflow: auto;
+}
+
+/* Tabela */
+.tabela{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabela th{
+    color: rgb(36, 36, 36);
+    font-size: 90%;
+    font-weight: 600;
+    height: 3rem;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.tabela td{
+    color: rgb(36, 36, 36);
+    text-align: center;
+    height: 2.5rem;
+    font-weight: 400;
+    font-size: 90%;
+}
+
+.nota_link_release a{
+    text-decoration: none;
+    color: rgb(36, 36, 36);
+}
+.nota_link_release a:hover{
+    color: #527285;
+}
+
+
+/* -------SESSÃO DESCRIÇÕES------- */
+#descricao{
+    width: 80%;
+}
+
+.descricao{
+    width: 100%;
+    margin-bottom: 10vh;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.descricao h2{
+    font-weight: 500;
+}
+
+.descricao h5{
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.descricao dt{
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.descricao dd{
+    margin-left: 2rem;
+}
+
+/* Cor tabela */
+#tabela tr:nth-child(even){
+    background: rgb(245, 248, 255)
+}
